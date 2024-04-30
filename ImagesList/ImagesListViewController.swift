@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImagesListViewController: UIViewController {
+final class ImagesListViewController: UIViewController {
     
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     private let photosName:[String] = Array(0..<20).map{"\($0)"}
@@ -60,18 +60,13 @@ class ImagesListViewController: UIViewController {
             cell.likeButton.tintColor = .gray
 
         }
-        
-        
-        
     }
-
-
 }
 
 extension ImagesListViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
+        performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
         }
 }
 
@@ -95,6 +90,4 @@ extension ImagesListViewController: UITableViewDataSource{
         let totalCellHeight = imageViewHeight 
         return totalCellHeight
     }
-    
-    
 }

@@ -7,14 +7,28 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController{
+final class ProfileViewController: UIViewController{
     
+    private var image = UIImageView()
+    private var nameLabel = UILabel()
+    private var nickNameLabel = UILabel()
+    private var descriptionLabel = UILabel()
+    private var button = UIButton()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor(named: "YPBlack")
+        setUpView()
+    }
     
-        let image = UIImageView(image: UIImage(named: "avatar"))
+    private func setUpView(){
+        view.backgroundColor = UIColor(named: "YPBlack")
+        
+        setUpImage()
+        setUpLabels()
+        setUpButton()
+    }
+    private func setUpImage(){
+        image = UIImageView(image: UIImage(named: "avatar"))
         image.layer.cornerRadius = 35
         image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -26,25 +40,24 @@ class ProfileViewController: UIViewController{
             image.widthAnchor.constraint(equalToConstant: 70),
             image.heightAnchor.constraint(equalToConstant: 70)
         ])
-
-        let nameLabel = UILabel()
+    }
+    
+    private func setUpLabels(){
         nameLabel.text = "Усачев Владислав"
         nameLabel.textColor = .white
-        nameLabel.font = UIFont(name: "System Semibold", size: 23)
+        nameLabel.font = UIFont(name: "YSDisplay-Bold", size: 23)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameLabel)
         
-        let nickNameLabel = UILabel()
         nickNameLabel.text = "@usvladis"
         nickNameLabel.textColor = UIColor(named: "YPGray")
-        nickNameLabel.font = UIFont(name: "System Semibold", size: 13)
+        nickNameLabel.font = UIFont(name: "YSDisplay-Medium", size: 13)
         nickNameLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nickNameLabel)
         
-        let descriptionLabel = UILabel()
         descriptionLabel.text = "Люблю маму!"
         descriptionLabel.textColor = .white
-        descriptionLabel.font = UIFont(name: "System Semibold", size: 13)
+        descriptionLabel.font = UIFont(name: "YSDisplay-Medium", size: 13)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
         
@@ -56,8 +69,10 @@ class ProfileViewController: UIViewController{
             descriptionLabel.topAnchor.constraint(equalTo: nickNameLabel.bottomAnchor, constant: 8),
             descriptionLabel.leadingAnchor.constraint(equalTo: nickNameLabel.leadingAnchor)
         ])
-        
-        let button = UIButton(type: .system)
+    }
+    
+    private func setUpButton(){
+        button = UIButton(type: .system)
         button.setImage(UIImage(named: "logout_button"), for: .normal)
         button.tintColor = UIColor(named: "YPRed")
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -69,9 +84,6 @@ class ProfileViewController: UIViewController{
             button.heightAnchor.constraint(equalToConstant: 48),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             button.centerYAnchor.constraint(equalTo: image.centerYAnchor)
-
-            
-        
         ])
     }
 
