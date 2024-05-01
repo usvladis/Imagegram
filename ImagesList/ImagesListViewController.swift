@@ -7,8 +7,9 @@
 
 import UIKit
 
-class ImagesListViewController: UIViewController {
+final class ImagesListViewController: UIViewController {
     
+    private let showSingleImageSegueIdentifier = "ShowSingleImage"
     private let photosName:[String] = Array(0..<20).map{"\($0)"}
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -27,13 +28,30 @@ class ImagesListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == showSingleImageSegueIdentifier { // 1
+               guard
+                   let viewController = segue.destination as? SingleViewController, // 2
+                   let indexPath = sender as? IndexPath // 3
+               else {
+                   assertionFailure("Invalid segue destination") // 4
+                   return
+               }
+
+               let image = UIImage(named: photosName[indexPath.row]) // 5
+               viewController.image = image // 6
+           } else {
+               super.prepare(for: segue, sender: sender) // 7
+           }
+       }
+    
     func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
         let imageName = photosName[indexPath.row] //Получаем имя
         guard let image = UIImage(named: imageName) else {return}//Проверяем возможность создать такой UIImage
         cell.cellImage.image = image
         
         let currientDate = Date()
-        let dateString = dateFormatter.string(from: Date())
+        let dateString = dateFormatter.string(from: currientDate)
         cell.dataLabel.text = dateString
         
         if indexPath.row % 2 == 0{
@@ -42,20 +60,13 @@ class ImagesListViewController: UIViewController {
             cell.likeButton.tintColor = .gray
 
         }
-        
-        
-        
     }
-
-
 }
 
 extension ImagesListViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-            return false
+        performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
         }
 }
 
@@ -79,6 +90,4 @@ extension ImagesListViewController: UITableViewDataSource{
         let totalCellHeight = imageViewHeight 
         return totalCellHeight
     }
-    
-    
 }
