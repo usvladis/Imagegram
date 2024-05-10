@@ -20,5 +20,5 @@ class OAuth2TokenStorage{
         }
     }
         
-    init() {}
+    private init() {}
 }

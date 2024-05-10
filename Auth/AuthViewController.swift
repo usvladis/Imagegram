@@ -9,7 +9,6 @@ import UIKit
 class AuthViewController: UIViewController{
     
     private let showWebViewViewController = "ShowWebView"
-    private let oAuth2Service = OAuth2Service.shared
     weak var delegate: AuthViewControllerDelegate?
     
     override func viewDidLoad() {

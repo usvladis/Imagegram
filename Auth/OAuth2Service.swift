@@ -16,7 +16,7 @@ struct OAuthTokenResponseBody: Codable {
 
 final class OAuth2Service{
     static let shared = OAuth2Service()
-    init() {}
+    private init() {}
     
     func makeTokenRequest(code: String) -> URLRequest? {
         guard let baseURL = Constants.baseURL else {
@@ -43,22 +43,34 @@ final class OAuth2Service{
         URLSession.shared.dataTask(with: request) {data, responce, error in
             //Проверяем наличие ошибок
             if let error {
-                complition(.failure(error))
+                print("Network request error: \(error)")
+                DispatchQueue.main.async {
+                    complition(.failure(error))
+                }
                 return
             }
             //Проверяем наличие ответа
             guard let httpResponse = responce as? HTTPURLResponse else {
-                complition(.failure(NetworkError.urlSessionError))
+                print("Invalid response")
+                DispatchQueue.main.async {
+                    complition(.failure(NetworkError.urlSessionError))
+                }
                 return
             }
             //Проверяем код ответа
-            guard (200 ..< 300) ~= httpResponse.statusCode else {//
-                complition(.failure(NetworkError.httpStatusCode(httpResponse.statusCode)))
+            guard (200 ..< 300) ~= httpResponse.statusCode else {
+                print("HTTP status code error: \(httpResponse.statusCode)")
+                DispatchQueue.main.async {
+                    complition(.failure(NetworkError.httpStatusCode(httpResponse.statusCode)))
+                }
                 return
             }
             //Проверяем наличие данных
             guard let data else {
-                complition(.failure(NetworkError.urlSessionError))
+                print("No data received")
+                DispatchQueue.main.async {
+                    complition(.failure(NetworkError.urlSessionError))
+                }
                 return
             }
             
@@ -66,10 +78,14 @@ final class OAuth2Service{
                 let tokenResponse = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: data)
                 let accessToken = tokenResponse.access_token
                 OAuth2TokenStorage.shared.token = accessToken
-                complition(.success(accessToken))
+                DispatchQueue.main.async {
+                    complition(.success(accessToken))
+                }
             } catch {
                 print("Error decoding token response: \(error)")
-                complition(.failure(error))
+                DispatchQueue.main.async {
+                    complition(.failure(error))
+                }
             }
         }.resume()
     }
