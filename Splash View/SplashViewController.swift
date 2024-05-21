@@ -12,7 +12,12 @@ class SplashViewController: UIViewController{
     private let oAuth2Service = OAuth2Service.shared
     private let storage = OAuth2TokenStorage.shared
     private let profileService = ProfileService()
+    private var alertPresenter: AlertPresenter!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        alertPresenter = AlertPresenter(viewController: self)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -98,6 +103,7 @@ extension SplashViewController: AuthViewControllerDelegate {
                 self.fetchProfile(token)
             case .failure(let error):
                 print("Error fetching token: \(error)")
+                alertPresenter.showAlert(with: "Не удалось войти в систему")
                 break
             }
         }
@@ -130,6 +136,7 @@ extension SplashViewController: AuthViewControllerDelegate {
                 }
             case .failure(let error):
                 print("Error fetching user profile: \(error)")
+                alertPresenter.showAlert(with: "Не удалось войти в систему")
             }
         }
     }

@@ -7,37 +7,74 @@
 
 import Foundation
 
-enum NetworkError: Error {  // 1
+enum NetworkError: Error {
     case httpStatusCode(Int)
     case urlRequestError(Error)
     case urlSessionError
 }
 
 extension URLSession {
+    func objectTask<T: Decodable>(
+        for request: URLRequest,
+        completion: @escaping (Result<T, Error>) -> Void
+    ) -> URLSessionTask {
+        let decoder = JSONDecoder()
+        
+        let task = data(for: request) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.global(qos: .userInitiated).async {
+                    do {
+                        let decodedObject = try decoder.decode(T.self, from: data)
+                        DispatchQueue.main.async {
+                            completion(.success(decodedObject))
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            completion(.failure(error))
+                        }
+                        print("[URLSession objectTask]: DecodingError - \(error.localizedDescription)")
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+                print("[URLSession objectTask]: NetworkError - \(error.localizedDescription)")
+            }
+        }
+        
+        return task
+    }
+    
     func data(
         for request: URLRequest,
         completion: @escaping (Result<Data, Error>) -> Void
     ) -> URLSessionTask {
-        let fulfillCompletionOnTheMainThread: (Result<Data, Error>) -> Void = { result in  // 2
+        let fulfillCompletionOnTheMainThread: (Result<Data, Error>) -> Void = { result in
             DispatchQueue.main.async {
                 completion(result)
             }
         }
         
-        let task = dataTask(with: request, completionHandler: { data, response, error in
+        let task = dataTask(with: request) { data, response, error in
             if let data = data, let response = response, let statusCode = (response as? HTTPURLResponse)?.statusCode {
                 if 200 ..< 300 ~= statusCode {
-                    fulfillCompletionOnTheMainThread(.success(data)) // 3
+                    fulfillCompletionOnTheMainThread(.success(data))
                 } else {
-                    fulfillCompletionOnTheMainThread(.failure(NetworkError.httpStatusCode(statusCode))) // 4
+                    fulfillCompletionOnTheMainThread(.failure(NetworkError.httpStatusCode(statusCode)))
+                    print("[URLSession data]: HTTPStatusCodeError - \(statusCode)")
                 }
             } else if let error = error {
-                fulfillCompletionOnTheMainThread(.failure(NetworkError.urlRequestError(error))) // 5
+                fulfillCompletionOnTheMainThread(.failure(NetworkError.urlRequestError(error)))
+                print("[URLSession data]: URLRequestError - \(error.localizedDescription)")
             } else {
-                fulfillCompletionOnTheMainThread(.failure(NetworkError.urlSessionError)) // 6
+                fulfillCompletionOnTheMainThread(.failure(NetworkError.urlSessionError))
+                print("[URLSession data]: URLSessionError - No data or error received")
             }
-        })
+        }
         
+        task.resume()
         return task
     }
 }

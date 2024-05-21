@@ -24,36 +24,25 @@ final class ProfileService {
     func fetchProfile(_ token: String, completion: @escaping (Result<ProfileResult, Error>) -> Void) {
         guard let url = URL(string: "https://api.unsplash.com/me") else {
             completion(.failure(NetworkError.urlSessionError))
-                return
-            }
+            return
+        }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error {
-                print("Network request error: \(error)")
+        let task = URLSession.shared.objectTask(for: request) { (result: Result<ProfileResult, Error>) in
+            switch result {
+            case .success(let profile):
+                DispatchQueue.main.async {
+                    completion(.success(profile))
+                }
+            case .failure(let error):
                 DispatchQueue.main.async {
                     completion(.failure(error))
                 }
-                return
+                print("[ProfileService fetchProfile]: NetworkError - \(error.localizedDescription) with token \(token)")
             }
-            
-            //Проверяем наличие данных
-            guard let data else {
-                print("No data received")
-                DispatchQueue.main.async {
-                    completion(.failure(NetworkError.urlSessionError))
-                }
-                return
-            }
-            
-            do{
-                let profileData = try JSONDecoder().decode(ProfileResult.self, from: data)
-                completion(.success(profileData))
-            } catch {
-                completion(.failure(error))
-            }
-            
-        }.resume()
+        }
+        
+        task.resume()
     }
 }

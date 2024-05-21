@@ -27,6 +27,7 @@
 		21829EEE2BF3E49900F46E44 /* new.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 21829ED82BF3E49900F46E44 /* new.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21829EF82BF3E4B000F46E44 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 21829EF72BF3E4B000F46E44 /* ProgressHUD */; };
 		21B0F4E52BFCC597003101BA /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0F4E42BFCC597003101BA /* ProfileImageService.swift */; };
+		21B0F4E82BFD2300003101BA /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0F4E72BFD2300003101BA /* AlertController.swift */; };
 		21BD94D62BBED6FF00AA6DBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94D52BBED6FF00AA6DBD /* AppDelegate.swift */; };
 		21BD94D82BBED6FF00AA6DBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94D72BBED6FF00AA6DBD /* SceneDelegate.swift */; };
 		21BD94DA2BBED6FF00AA6DBD /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94D92BBED6FF00AA6DBD /* ImagesListViewController.swift */; };
@@ -112,6 +113,7 @@
 		21829EE12BF3E49900F46E44 /* newTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = newTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21829EE82BF3E49900F46E44 /* newTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newTests.swift; sourceTree = "<group>"; };
 		21B0F4E42BFCC597003101BA /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
+		21B0F4E72BFD2300003101BA /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		21BD94D22BBED6FF00AA6DBD /* Imagegram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imagegram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BD94D52BBED6FF00AA6DBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21BD94D72BBED6FF00AA6DBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,9 +246,18 @@
 			path = newTests;
 			sourceTree = "<group>";
 		};
+		21B0F4E62BFD22DC003101BA /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				21B0F4E72BFD2300003101BA /* AlertController.swift */,
+			);
+			path = AlertController;
+			sourceTree = "<group>";
+		};
 		21BD94C92BBED6FF00AA6DBD = {
 			isa = PBXGroup;
 			children = (
+				21B0F4E62BFD22DC003101BA /* AlertController */,
 				21D1566B2BF91158005BBED3 /* ProgressHUD */,
 				214B801B2BEA8B300048B461 /* Splash View */,
 				214B80102BE50D1B0048B461 /* Auth */,
@@ -554,6 +565,7 @@
 				214B801D2BEA8B510048B461 /* SplashViewController.swift in Sources */,
 				21105BBD2BC54E04005D0C20 /* ImagesListCell.swift in Sources */,
 				2107EEB12BE15E9200E59521 /* SingleViewController.swift in Sources */,
+				21B0F4E82BFD2300003101BA /* AlertController.swift in Sources */,
 				21D1566D2BF9116A005BBED3 /* UIBlockingProgressHUD.swift in Sources */,
 				21BD94D62BBED6FF00AA6DBD /* AppDelegate.swift in Sources */,
 				214B80182BEA59930048B461 /* URLSession+data.swift in Sources */,

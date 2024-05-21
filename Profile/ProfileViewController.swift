@@ -8,7 +8,7 @@
 import UIKit
 
 final class ProfileViewController: UIViewController{
-   
+    private var profileImageServiceObserver: NSObjectProtocol?      // 1
 
     private var image = UIImageView()
     private var nameLabel = UILabel()
@@ -20,6 +20,16 @@ final class ProfileViewController: UIViewController{
         super.viewDidLoad()
         setUpView()
         updateLabels()
+        profileImageServiceObserver = NotificationCenter.default    // 2
+            .addObserver(
+                forName: ProfileImageService.didChangeNotification, // 3
+                object: nil,                                        // 4
+                queue: .main                                        // 5
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.updateAvatar()                                 // 6
+            }
+        updateAvatar()                                              // 7
     }
     
     private func setUpView(){
@@ -96,6 +106,12 @@ extension ProfileViewController {
         nameLabel.text = profile.name
         nickNameLabel.text = profile.loginName
         descriptionLabel.text = profile.bio
+    }
+    func updateAvatar(){
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else { return }
     }
 }
 

@@ -17,33 +17,27 @@ final class WebViewViewController: UIViewController{
     @IBOutlet private var webView: WKWebView!
     @IBOutlet private var progress: UIProgressView!
     
+    private var progressObservation: NSKeyValueObservation?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
         loadAuthView()
-        webView.addObserver(
-            self,
-            forKeyPath: #keyPath(WKWebView.estimatedProgress),
-            options: .new,
-            context: nil)
+        observeProgress()
     }
     
-    override func observeValue(
-        forKeyPath keyPath: String?,
-        of object: Any?, 
-        change: [NSKeyValueChangeKey : Any]?,
-        context: UnsafeMutableRawPointer?
-    ) {
-        if keyPath == #keyPath(WKWebView.estimatedProgress) {
-            upgradeProgress()
-        }else{
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+    private func observeProgress() {
+        progressObservation = webView.observe(\.estimatedProgress, options: .new) { [weak self] _, change in
+            guard let self = self else { return }
+            if let newValue = change.newValue {
+                self.updateProgress(newValue)
+            }
         }
     }
     
-    private func upgradeProgress() {
-        progress.progress = Float(webView.estimatedProgress)
-        progress.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
+    private func updateProgress(_ progressValue: Double) {
+        progress.progress = Float(progressValue)
+        progress.isHidden = fabs(progressValue - 1.0) <= 0.0001
     }
     private func loadAuthView(){
         guard var urlComponents = URLComponents(string: WebViewConstants.unsplashAuthorizeURLString) else {fatalError("Failed to construct URL")}
