@@ -8,16 +8,18 @@
 import UIKit
 
 final class ProfileViewController: UIViewController{
-    
+   
+
     private var image = UIImageView()
     private var nameLabel = UILabel()
     private var nickNameLabel = UILabel()
     private var descriptionLabel = UILabel()
     private var button = UIButton()
-
+    let profileService = ProfileService()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+        updateLabels()
     }
     
     private func setUpView(){
@@ -43,19 +45,16 @@ final class ProfileViewController: UIViewController{
     }
     
     private func setUpLabels(){
-        nameLabel.text = "Усачев Владислав"
         nameLabel.textColor = .white
         nameLabel.font = UIFont(name: "YSDisplay-Bold", size: 23)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameLabel)
         
-        nickNameLabel.text = "@usvladis"
         nickNameLabel.textColor = UIColor(named: "YPGray")
         nickNameLabel.font = UIFont(name: "YSDisplay-Medium", size: 13)
         nickNameLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nickNameLabel)
         
-        descriptionLabel.text = "Люблю маму!"
         descriptionLabel.textColor = .white
         descriptionLabel.font = UIFont(name: "YSDisplay-Medium", size: 13)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -91,3 +90,18 @@ final class ProfileViewController: UIViewController{
     }
 }
 
+extension ProfileViewController {
+    func updateLabels() {
+        guard let profile = ProfileStore.shared.profile else { return }
+        nameLabel.text = profile.name
+        nickNameLabel.text = profile.loginName
+        descriptionLabel.text = profile.bio
+    }
+}
+
+final class ProfileStore {
+    static let shared = ProfileStore()
+    private init() {}
+
+    var profile: Profile?
+}
