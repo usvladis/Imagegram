@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 final class ProfileViewController: UIViewController{
     private var profileImageServiceObserver: NSObjectProtocol?      // 1
 
@@ -27,9 +27,7 @@ final class ProfileViewController: UIViewController{
                 queue: .main                                        // 5
             ) { [weak self] _ in
                 guard let self = self else { return }
-                self.updateAvatar()                                 // 6
             }
-        updateAvatar()                                              // 7
     }
     
     private func setUpView(){
@@ -40,7 +38,13 @@ final class ProfileViewController: UIViewController{
         setUpButton()
     }
     private func setUpImage(){
-        image = UIImageView(image: UIImage(named: "avatar"))
+        image = UIImageView()
+        if let avatarURLString = ProfileImageService.shared.avatarURL,
+           let avatarURL = URL(string: avatarURLString) {
+            image.kf.setImage(with: avatarURL, placeholder: UIImage(named: "placeholder"))
+        } else {
+            image.image = UIImage(named: "placeholder")
+        }
         image.layer.cornerRadius = 35
         image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -106,12 +110,6 @@ extension ProfileViewController {
         nameLabel.text = profile.name
         nickNameLabel.text = profile.loginName
         descriptionLabel.text = profile.bio
-    }
-    func updateAvatar(){
-        guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
-            let url = URL(string: profileImageURL)
-        else { return }
     }
 }
 

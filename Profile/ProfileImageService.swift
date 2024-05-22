@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import Kingfisher
 struct UserResult: Codable{
     let profile_image: ProfileImages
 }
 struct ProfileImages: Codable{
-    let small: String
+    let large: String
+    
 }
 final class ProfileImageService{
     static let didChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
@@ -32,7 +34,7 @@ final class ProfileImageService{
         let task = URLSession.shared.objectTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
             switch result {
             case .success(let userResult):
-                let avatarURL = userResult.profile_image.small
+                let avatarURL = userResult.profile_image.large
                 self?.avatarURL = avatarURL
                 NotificationCenter.default.post(
                     name: ProfileImageService.didChangeNotification,
