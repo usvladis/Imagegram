@@ -17,6 +17,6 @@ class AlertPresenter {
     func showAlert(with message: String) {
         let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ОК", style: .default))
-        viewController?.present(alert, animated: true)
+            viewController?.present(alert, animated: true)
     }
 }
