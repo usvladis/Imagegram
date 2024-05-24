@@ -8,23 +8,23 @@
 import UIKit
 import Kingfisher
 final class ProfileViewController: UIViewController{
-    private var profileImageServiceObserver: NSObjectProtocol?      // 1
+    private var profileImageServiceObserver: NSObjectProtocol?
 
     private var image = UIImageView()
     private var nameLabel = UILabel()
     private var nickNameLabel = UILabel()
     private var descriptionLabel = UILabel()
     private var button = UIButton()
-    let profileService = ProfileService()
+    let profileService = ProfileService.shared
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
         updateLabels()
-        profileImageServiceObserver = NotificationCenter.default    // 2
+        profileImageServiceObserver = NotificationCenter.default
             .addObserver(
-                forName: ProfileImageService.didChangeNotification, // 3
-                object: nil,                                        // 4
-                queue: .main                                        // 5
+                forName: ProfileImageService.didChangeNotification,
+                object: nil,
+                queue: .main                                       
             ) { [weak self] _ in
                 guard let self = self else { return }
             }
@@ -106,16 +106,9 @@ final class ProfileViewController: UIViewController{
 
 extension ProfileViewController {
     func updateLabels() {
-        guard let profile = ProfileStore.shared.profile else { return }
+        guard let profile = ProfileService.shared.profile else { return }
         nameLabel.text = profile.name
         nickNameLabel.text = profile.loginName
         descriptionLabel.text = profile.bio
     }
-}
-
-final class ProfileStore {
-    static let shared = ProfileStore()
-    private init() {}
-
-    var profile: Profile?
 }

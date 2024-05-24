@@ -11,8 +11,9 @@ class SplashViewController: UIViewController{
     private let showAuthenticationScreenSegueIdentifier = "ShowAuthenticationScreen"
     private let oAuth2Service = OAuth2Service.shared
     private let storage = OAuth2TokenStorage.shared
-    private let profileService = ProfileService()
-    private var alertPresenter: AlertPresenter!
+    private let profileService = ProfileService.shared
+    private let profileImageServce = ProfileImageService.shared
+    private var alertPresenter: AlertPresenter?
     private var image = UIImageView()
     
     override func viewDidLoad() {
@@ -38,8 +39,8 @@ class SplashViewController: UIViewController{
         view.addSubview(image)
         
         NSLayoutConstraint.activate([
-            image.widthAnchor.constraint(equalToConstant: 72.67),
-            image.heightAnchor.constraint(equalToConstant: 75.33),
+            image.widthAnchor.constraint(equalToConstant: 72),
+            image.heightAnchor.constraint(equalToConstant: 75),
             image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             image.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
@@ -93,13 +94,13 @@ extension SplashViewController: AuthViewControllerDelegate {
                 self.fetchProfile(token)
             case .failure(let error):
                 print("Error fetching token: \(error)")
-                alertPresenter.showAlert(with: "Не удалось войти в систему")
+                alertPresenter?.showAlert(with: "Не удалось войти в систему")
                 break
             }
         }
     }
     
-    func fetchProfile(_ token: String) {
+    private func fetchProfile(_ token: String) {
         
         profileService.fetchProfile(token) { [weak self] result in
             guard let self = self else { return }
@@ -112,8 +113,8 @@ extension SplashViewController: AuthViewControllerDelegate {
                     loginName: "@\(profileResult.username)",
                     bio: profileResult.bio ?? "N/A")
                 
-                ProfileStore.shared.profile = profile
-                ProfileImageService.shared.fetchProfileImageURL(username: profileResult.username) { result in
+                profileService.profile = profile
+                profileImageServce.fetchProfileImageURL(username: profileResult.username) { result in
                     switch result {
                     case .success(let avatarURL):
                         self.switchToTabBarController()
@@ -125,7 +126,7 @@ extension SplashViewController: AuthViewControllerDelegate {
                 }
             case .failure(let error):
                 print("Error fetching user profile: \(error)")
-                    alertPresenter.showAlert(with: "Не удалось войти в систему")
+                alertPresenter?.showAlert(with: "Не удалось войти в систему")
             }
         }
     }

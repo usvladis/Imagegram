@@ -21,26 +21,20 @@ extension URLSession {
         let decoder = JSONDecoder()
         
         let task = data(for: request) { result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
                     do {
                         let decodedObject = try decoder.decode(T.self, from: data)
-                        DispatchQueue.main.async {
-                            completion(.success(decodedObject))
-                        }
+                        completion(.success(decodedObject))
                     } catch {
-                        DispatchQueue.main.async {
-                            completion(.failure(error))
-                        }
+                        completion(.failure(error))
                         print("[URLSession objectTask]: DecodingError - \(error.localizedDescription)")
                     }
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
+                case .failure(let error):
                     completion(.failure(error))
+                    print("[URLSession objectTask]: NetworkError - \(error.localizedDescription)")
                 }
-                print("[URLSession objectTask]: NetworkError - \(error.localizedDescription)")
             }
         }
         

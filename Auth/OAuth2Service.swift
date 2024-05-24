@@ -60,26 +60,24 @@ final class OAuth2Service{
         }
         lastCode = code
         guard
-            let request = makeTokenRequest(code: code)           
+            let request = makeTokenRequest(code: code)
         else {
             completion(.failure(AuthServiceError.invalidRequest))
             return
         }
         
         let task = urlSession.objectTask(for: request) { [weak self] (result: Result<OAuthTokenResponseBody, Error>) in
-            switch result {
-            case .success(let tokenResponse):
-                let accessToken = tokenResponse.access_token
-                OAuth2TokenStorage.shared.token = accessToken
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let tokenResponse):
+                    let accessToken = tokenResponse.access_token
+                    OAuth2TokenStorage.shared.token = accessToken
+                    print("Success! Access token: \(accessToken)")
                     completion(.success(accessToken))
-                }
-                print("Success! Access token: \(accessToken)")
-            case .failure(let error):
-                DispatchQueue.main.async {
+                case .failure(let error):
+                    print("[OAuth2Service fetchOAuthToken]: NetworkError - \(error.localizedDescription) with code \(code)")
                     completion(.failure(error))
                 }
-                print("[OAuth2Service fetchOAuthToken]: NetworkError - \(error.localizedDescription) with code \(code)")
             }
             self?.task = nil
             self?.lastCode = nil

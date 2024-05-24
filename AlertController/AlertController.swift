@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlertPresenter {
+final class AlertPresenter {
     private weak var viewController: UIViewController?
     
     init(viewController: UIViewController) {
@@ -15,8 +15,12 @@ class AlertPresenter {
     }
     
     func showAlert(with message: String) {
-        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ОК", style: .default))
-            viewController?.present(alert, animated: true)
+        let alert = UIAlertController(title: "Ошибка",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ОК",
+                                      style: .default))
+        viewController?.present(alert,
+                                animated: true)
     }
 }
