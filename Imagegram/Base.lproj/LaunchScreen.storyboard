@@ -18,7 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_screen_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Kbe-dy-N5V">
-                                <rect key="frame" x="178.66666666666666" y="429" width="72.666666666666657" height="75.333333333333314"/>
+                                <rect key="frame" x="179" y="429" width="72" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="Nu9-Ub-w1j"/>
+                                    <constraint firstAttribute="height" constant="75" id="VrD-PK-j20"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

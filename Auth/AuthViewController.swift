@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class AuthViewController: UIViewController{
+final class AuthViewController: UIViewController{
     
     private let showWebViewViewController = "ShowWebView"
     weak var delegate: AuthViewControllerDelegate?

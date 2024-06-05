@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class ImagesListCell: UITableViewCell{    static let reuseIdentifire = "ImagesListCell"
+final class ImagesListCell: UITableViewCell{    
+    static let reuseIdentifire = "ImagesListCell"
     
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var likeButton: UIButton!
