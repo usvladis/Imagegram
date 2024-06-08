@@ -57,6 +57,9 @@
                                                     <state key="normal">
                                                         <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="likeButtonClicked" destination="coO-aL-HBg" eventType="touchUpInside" id="v53-zr-pNr"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 августа 2024" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvf-hu-5Mx" userLabel="Data Label">
                                                     <rect key="frame" x="24" y="191.66666666666666" width="518" height="15.333333333333343"/>

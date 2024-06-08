@@ -14,7 +14,7 @@ struct Photo{
     let welcomeDescription: String?
     let thumbImageURL: String
     let largeImageURL: String
-    let isLiked: Bool
+    var isLiked: Bool
 }
 struct PhotoResult: Codable{
     let id: String
@@ -82,6 +82,33 @@ final class ImagesListService{
                 }
             } catch {
                 print("Error decoding photos: \(error)")
+            }
+        }
+        task.resume()
+    }
+    
+    func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
+        let urlString = "https://api.unsplash.com/photos/\(photoId)/\(isLike ? "like" : "unlike")?client_id=\(OAuth2TokenStorage.shared.token!)"
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = isLike ? "POST" : "DELETE"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                    print("Error changing like: \(error)")
+                }
+                return
+            }
+            
+            if let index = self.photos.firstIndex(where: { $0.id == photoId }) {
+                self.photos[index].isLiked = isLike
+                NotificationCenter.default.post(name: ImagesListService.didChangeNotification, object: self)
+            }
+            
+            DispatchQueue.main.async {
+                completion(.success(()))
             }
         }
         task.resume()

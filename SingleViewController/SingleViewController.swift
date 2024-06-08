@@ -6,15 +6,21 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class SingleViewController: UIViewController{
-    var image: UIImage? {
+    var imageURL: URL? {
         didSet {
-            guard isViewLoaded, let image else { return }
-
-            imageView.image = image
-            imageView.frame.size = image.size
-            setupImageView(image)
+            guard isViewLoaded, let imageURL else { return }
+            imageView.kf.indicatorType = .activity
+            imageView.kf.setImage(with: imageURL, completionHandler: { [weak self] result in
+                switch result {
+                case .success(let value):
+                    self?.setupImageView(value.image)
+                case .failure(let error):
+                    print("Error loading image: \(error)")
+                }
+            })
         }
     }
 
@@ -26,10 +32,16 @@ final class SingleViewController: UIViewController{
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
 
-        guard let image else { return }
-        imageView.image = image
-        imageView.frame.size = image.size
-        setupImageView(image)
+        guard let imageURL else { return }
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: imageURL, completionHandler: { [weak self] result in
+            switch result {
+            case .success(let value):
+                self?.setupImageView(value.image)
+            case .failure(let error):
+                print("Error loading image: \(error)")
+            }
+        })
     }
 
     @IBAction private func didTapBackButton() {
@@ -37,7 +49,7 @@ final class SingleViewController: UIViewController{
     }
     
     @IBAction func didTapShareButton(_ sender: UIButton) {
-        guard let image else { return }
+        guard let image = imageView.image else { return }
         let share = UIActivityViewController(
             activityItems: [image],
             applicationActivities: nil

@@ -14,10 +14,13 @@ final class ImagesListCell: UITableViewCell{
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var dataLabel: UILabel!
+    weak var delegate: ImagesListCellDelegate? 
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        // Отменяем загрузку, чтобы избежать багов при переиспользовании ячеек
-//        fullsizeImageView.kf.cancelDownloadTask()
+    @IBAction private func likeButtonClicked() {
+        delegate?.imageListCellDidTapLike(self)
+    }
+    
+    func setIsLiked(_ isLiked: Bool) {
+        likeButton.tintColor = isLiked ? .ypRed : .gray
     }
 }
