@@ -12,8 +12,10 @@ final class SingleViewController: UIViewController{
     var imageURL: URL? {
         didSet {
             guard isViewLoaded, let imageURL else { return }
-            imageView.kf.indicatorType = .activity
-            imageView.kf.setImage(with: imageURL, completionHandler: { [weak self] result in
+            UIBlockingProgressHUD.show()
+            imageView.kf.setImage(with: imageURL, 
+                                  completionHandler: { [weak self] result in
+                UIBlockingProgressHUD.dismiss()
                 switch result {
                 case .success(let value):
                     self?.setupImageView(value.image)
@@ -33,8 +35,10 @@ final class SingleViewController: UIViewController{
         scrollView.maximumZoomScale = 1.25
 
         guard let imageURL else { return }
-        imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: imageURL, completionHandler: { [weak self] result in
+        UIBlockingProgressHUD.show()
+        imageView.kf.setImage(with: imageURL, 
+                              completionHandler: { [weak self] result in
+            UIBlockingProgressHUD.dismiss()
             switch result {
             case .success(let value):
                 self?.setupImageView(value.image)
@@ -57,32 +61,6 @@ final class SingleViewController: UIViewController{
         present(share, animated: true, completion: nil)
     }
     
-    private func setupImageView(_ image: UIImage) {
-        let screenSize = UIScreen.main.bounds.size
-        
-        // Вычисляем соотношение сторон изображения
-        let aspectRatio = image.size.width / image.size.height
-        
-        // Вычисляем максимальные размеры изображения, учитывая размеры экрана
-        let maxWidth = screenSize.width
-        let maxHeight = screenSize.height
-        
-        // Вычисляем новые размеры изображения, учитывая его соотношение сторон и максимальные размеры
-        var newWidth = min(image.size.width, maxWidth)
-        var newHeight = newWidth / aspectRatio
-        
-        // Если новая высота больше максимальной, уменьшаем новую ширину и высоту до максимальных значений
-        if newHeight > maxHeight {
-            newHeight = maxHeight
-            newWidth = newHeight * aspectRatio
-        }
-        
-        // Устанавливаем новые размеры изображения
-        imageView.frame.size = CGSize(width: newWidth, height: newHeight)
-        
-        // Устанавливаем изображение по центру экрана
-        imageView.center = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
-    }
 }
 
 extension SingleViewController: UIScrollViewDelegate {
@@ -100,3 +78,24 @@ extension SingleViewController: UIScrollViewDelegate {
        }
 }
 
+extension SingleViewController{
+    private func setupImageView(_ image: UIImage) {
+        let screenSize = UIScreen.main.bounds.size
+        
+        // Вычисляем соотношение сторон изображения
+        let aspectRatio = image.size.width / image.size.height
+        
+        // Вычисляем новые размеры изображения в зависимости от высоты изображения и высоты экрана
+        var newWidth: CGFloat
+        var newHeight: CGFloat
+        
+        newHeight = screenSize.height
+        newWidth = newHeight * aspectRatio
+        
+        // Устанавливаем новые размеры изображения
+        imageView.frame.size = CGSize(width: newWidth, height: newHeight)
+        
+        // Устанавливаем изображение по центру экрана
+        imageView.center = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
+    }
+}

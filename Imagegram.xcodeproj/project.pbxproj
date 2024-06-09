@@ -21,6 +21,7 @@
 		214B801D2BEA8B510048B461 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B801C2BEA8B510048B461 /* SplashViewController.swift */; };
 		216360632C11D3150004F9EB /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 216360622C11D3150004F9EB /* ProgressHUD */; };
 		216360652C1319A90004F9EB /* ImagesListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216360642C1319A90004F9EB /* ImagesListCellDelegate.swift */; };
+		216360672C15CE030004F9EB /* ProfileLogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216360662C15CE030004F9EB /* ProfileLogoutService.swift */; };
 		21B0F4E52BFCC597003101BA /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0F4E42BFCC597003101BA /* ProfileImageService.swift */; };
 		21B0F4E82BFD2300003101BA /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0F4E72BFD2300003101BA /* AlertController.swift */; };
 		21BD94D62BBED6FF00AA6DBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94D52BBED6FF00AA6DBD /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 		21BD94F02BBED70200AA6DBD /* ImagegramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94EF2BBED70200AA6DBD /* ImagegramTests.swift */; };
 		21BD94FA2BBED70200AA6DBD /* ImagegramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94F92BBED70200AA6DBD /* ImagegramUITests.swift */; };
 		21BD94FC2BBED70200AA6DBD /* ImagegramUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94FB2BBED70200AA6DBD /* ImagegramUITestsLaunchTests.swift */; };
+		21C509E62C165ECC0079CD0A /* ProfileAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C509E52C165ECC0079CD0A /* ProfileAlertController.swift */; };
 		21D1566D2BF9116A005BBED3 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1566C2BF9116A005BBED3 /* UIBlockingProgressHUD.swift */; };
 		21D1566F2BF9185B005BBED3 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1566E2BF9185B005BBED3 /* ProfileService.swift */; };
 		21D49D742BFF7D10004D1818 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D49D732BFF7D10004D1818 /* TabBarController.swift */; };
@@ -93,6 +95,7 @@
 		214B80192BEA62660048B461 /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
 		214B801C2BEA8B510048B461 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		216360642C1319A90004F9EB /* ImagesListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCellDelegate.swift; sourceTree = "<group>"; };
+		216360662C15CE030004F9EB /* ProfileLogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogoutService.swift; sourceTree = "<group>"; };
 		21B0F4E42BFCC597003101BA /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
 		21B0F4E72BFD2300003101BA /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		21BD94D22BBED6FF00AA6DBD /* Imagegram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imagegram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +112,7 @@
 		21BD94F52BBED70200AA6DBD /* ImagegramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImagegramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BD94F92BBED70200AA6DBD /* ImagegramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagegramUITests.swift; sourceTree = "<group>"; };
 		21BD94FB2BBED70200AA6DBD /* ImagegramUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagegramUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		21C509E52C165ECC0079CD0A /* ProfileAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAlertController.swift; sourceTree = "<group>"; };
 		21D1566C2BF9116A005BBED3 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 		21D1566E2BF9185B005BBED3 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		21D49D732BFF7D10004D1818 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 				2107EEAD2BE15E4C00E59521 /* ProfileViewController.swift */,
 				21D1566E2BF9185B005BBED3 /* ProfileService.swift */,
 				21B0F4E42BFCC597003101BA /* ProfileImageService.swift */,
+				216360662C15CE030004F9EB /* ProfileLogoutService.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				21B0F4E72BFD2300003101BA /* AlertController.swift */,
+				21C509E52C165ECC0079CD0A /* ProfileAlertController.swift */,
 			);
 			path = AlertController;
 			sourceTree = "<group>";
@@ -484,11 +490,13 @@
 				2107EEAE2BE15E4C00E59521 /* ProfileViewController.swift in Sources */,
 				21BD94E02BBED6FF00AA6DBD /* Imagegram.xcdatamodeld in Sources */,
 				21BD94DA2BBED6FF00AA6DBD /* ImagesListViewController.swift in Sources */,
+				216360672C15CE030004F9EB /* ProfileLogoutService.swift in Sources */,
 				21D49DCC2C1072BD004D1818 /* ImagesListService.swift in Sources */,
 				214B80162BE9022F0048B461 /* OAuth2Service.swift in Sources */,
 				21B0F4E52BFCC597003101BA /* ProfileImageService.swift in Sources */,
 				214B801D2BEA8B510048B461 /* SplashViewController.swift in Sources */,
 				21105BBD2BC54E04005D0C20 /* ImagesListCell.swift in Sources */,
+				21C509E62C165ECC0079CD0A /* ProfileAlertController.swift in Sources */,
 				2107EEB12BE15E9200E59521 /* SingleViewController.swift in Sources */,
 				216360652C1319A90004F9EB /* ImagesListCellDelegate.swift in Sources */,
 				21D49D742BFF7D10004D1818 /* TabBarController.swift in Sources */,

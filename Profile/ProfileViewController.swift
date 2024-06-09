@@ -15,9 +15,13 @@ final class ProfileViewController: UIViewController{
     private var nickNameLabel = UILabel()
     private var descriptionLabel = UILabel()
     private var button = UIButton()
+    private var alertPresenter: ProfileAlertPresenter?
     let profileService = ProfileService.shared
+    let logoutService = ProfileLogoutService.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        alertPresenter = ProfileAlertPresenter(viewController: self)
         setUpView()
         updateLabels()
         profileImageServiceObserver = NotificationCenter.default
@@ -26,7 +30,7 @@ final class ProfileViewController: UIViewController{
                 object: nil,
                 queue: .main                                       
             ) { [weak self] _ in
-                guard let self = self else { return }
+                guard self != nil else { return }
             }
     }
     
@@ -101,14 +105,37 @@ final class ProfileViewController: UIViewController{
     }
 
     @IBAction private func didTapLogoutButton() {
+        alertPresenter?.showAlert { [weak self] in
+            self?.logout()
+        }
+    }
+    
+    private func logout() {
+        logoutService.clearAllUserData()
+        switchToSplashView()
     }
 }
 
 extension ProfileViewController {
-    func updateLabels() {
+    private func updateLabels() {
         guard let profile = ProfileService.shared.profile else { return }
         nameLabel.text = profile.name
         nickNameLabel.text = profile.loginName
         descriptionLabel.text = profile.bio
+    }
+}
+
+extension ProfileViewController{
+    private func switchToSplashView() {
+        DispatchQueue.main.async { [weak self] in
+            guard self != nil else { return }
+            guard let window = UIApplication.shared.windows.first else {
+                assertionFailure("Invalid window configuration")
+                return
+            }
+            let splashViewController = SplashViewController()
+            window.rootViewController = splashViewController
+            window.makeKeyAndVisible()
+        }
     }
 }

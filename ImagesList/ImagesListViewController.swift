@@ -26,7 +26,6 @@ final class ImagesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 200
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         NotificationCenter.default.addObserver(self, selector: #selector(updatePhotos), name: ImagesListService.didChangeNotification, object: nil)
         
@@ -112,6 +111,12 @@ extension ImagesListViewController {
         imageListService.fetchPhotosNextPage()
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            let photo = photos[indexPath.row]
+            let aspectRatio = photo.size.height / photo.size.width
+            return tableView.bounds.width * aspectRatio
+        }
 }
 
 extension ImagesListViewController: ImagesListCellDelegate{

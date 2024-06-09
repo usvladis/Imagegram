@@ -46,4 +46,8 @@ final class ProfileService {
         }
         task.resume()
     }
+    
+    func clearProfileData() {
+        self.profile = nil
+    }
 }

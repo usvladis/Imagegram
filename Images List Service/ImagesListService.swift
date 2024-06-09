@@ -28,8 +28,8 @@ struct PhotoResult: Codable{
 }
 
 struct UrlsResult: Codable{
+    let full: String
     let regular: String
-    let thumb: String
 }
 
 final class ImagesListService{
@@ -68,7 +68,7 @@ final class ImagesListService{
                           size: CGSize(width: result.width, height: result.height),
                           createdAt: result.created_at,
                           welcomeDescription: result.description,
-                          thumbImageURL: result.urls.thumb,
+                          thumbImageURL: result.urls.regular,
                           largeImageURL: result.urls.regular,
                           isLiked: result.liked_by_user)
                 }
