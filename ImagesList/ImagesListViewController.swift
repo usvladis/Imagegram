@@ -27,13 +27,12 @@ final class ImagesListViewController: UIViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
-        NotificationCenter.default.addObserver(self, selector: #selector(updatePhotos), name: ImagesListService.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableViewAnimated), name: ImagesListService.didChangeNotification, object: nil)
         
         imageListService.fetchPhotosNextPage()
-        // Do any additional setup after loading the view.
     }
     
-    @objc private func updatePhotos() {
+    @objc private func updateTableViewAnimated() {
         let oldPhotos = photos.count
         let newPhotos = imageListService.photos.count
         photos = imageListService.photos
@@ -48,7 +47,7 @@ final class ImagesListViewController: UIViewController {
     }
     
     func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
-        let photo = photos[indexPath.row] //Получаем имя
+        let photo = photos[indexPath.row]
         if let url = URL(string: photo.thumbImageURL) {
             cell.cellImage.kf.setImage(with: url,
                                        placeholder: UIImage(named: "placeholder_card"))

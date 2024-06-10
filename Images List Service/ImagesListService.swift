@@ -53,7 +53,7 @@ final class ImagesListService{
             defer { self.isLoading = false }
             
             if let error = error {
-                print("Error fetching photos: \(error)")
+                print("[ImageListService fetchPhotosNextPage]: NetworkError - \(error.localizedDescription)")
                 return
             }
             
@@ -81,7 +81,7 @@ final class ImagesListService{
                     NotificationCenter.default.post(name: ImagesListService.didChangeNotification, object: self)
                 }
             } catch {
-                print("Error decoding photos: \(error)")
+                print("[ImageListService fetchPhotosNextPage]: NetworkError - \(error.localizedDescription)")
             }
         }
         task.resume()
@@ -97,7 +97,7 @@ final class ImagesListService{
             if let error = error {
                 DispatchQueue.main.async {
                     completion(.failure(error))
-                    print("Error changing like: \(error)")
+                    print("[ImageListService changeLike]: NetworkError - \(error.localizedDescription)")
                 }
                 return
             }
