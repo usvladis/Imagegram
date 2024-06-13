@@ -6,13 +6,21 @@
 //
 
 import UIKit
+import Kingfisher
 
-final class ImagesListCell: UITableViewCell{    
+final class ImagesListCell: UITableViewCell{
     static let reuseIdentifire = "ImagesListCell"
     
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var dataLabel: UILabel!
-
-
+    weak var delegate: ImagesListCellDelegate? 
+    
+    @IBAction private func likeButtonClicked() {
+        delegate?.imageListCellDidTapLike(self)
+    }
+    
+    func setIsLiked(_ isLiked: Bool) {
+        likeButton.tintColor = isLiked ? .ypRed : .gray
+    }
 }

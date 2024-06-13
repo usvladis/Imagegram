@@ -116,7 +116,7 @@ extension SplashViewController: AuthViewControllerDelegate {
                 profileService.profile = profile
                 profileImageServce.fetchProfileImageURL(username: profileResult.username) { result in
                     switch result {
-                    case .success(let avatarURL):
+                    case .success(_):
                         self.switchToTabBarController()
                     case .failure(let error):
                         print("Error fetching avatar URL: \(error)")

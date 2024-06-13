@@ -19,6 +19,9 @@
 		214B80182BEA59930048B461 /* URLSession+data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B80172BEA59930048B461 /* URLSession+data.swift */; };
 		214B801A2BEA62660048B461 /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B80192BEA62660048B461 /* OAuth2TokenStorage.swift */; };
 		214B801D2BEA8B510048B461 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B801C2BEA8B510048B461 /* SplashViewController.swift */; };
+		216360632C11D3150004F9EB /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 216360622C11D3150004F9EB /* ProgressHUD */; };
+		216360652C1319A90004F9EB /* ImagesListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216360642C1319A90004F9EB /* ImagesListCellDelegate.swift */; };
+		216360672C15CE030004F9EB /* ProfileLogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216360662C15CE030004F9EB /* ProfileLogoutService.swift */; };
 		21B0F4E52BFCC597003101BA /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0F4E42BFCC597003101BA /* ProfileImageService.swift */; };
 		21B0F4E82BFD2300003101BA /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0F4E72BFD2300003101BA /* AlertController.swift */; };
 		21BD94D62BBED6FF00AA6DBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94D52BBED6FF00AA6DBD /* AppDelegate.swift */; };
@@ -31,12 +34,14 @@
 		21BD94F02BBED70200AA6DBD /* ImagegramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94EF2BBED70200AA6DBD /* ImagegramTests.swift */; };
 		21BD94FA2BBED70200AA6DBD /* ImagegramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94F92BBED70200AA6DBD /* ImagegramUITests.swift */; };
 		21BD94FC2BBED70200AA6DBD /* ImagegramUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD94FB2BBED70200AA6DBD /* ImagegramUITestsLaunchTests.swift */; };
+		21C509E62C165ECC0079CD0A /* ProfileAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C509E52C165ECC0079CD0A /* ProfileAlertController.swift */; };
 		21D1566D2BF9116A005BBED3 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1566C2BF9116A005BBED3 /* UIBlockingProgressHUD.swift */; };
 		21D1566F2BF9185B005BBED3 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1566E2BF9185B005BBED3 /* ProfileService.swift */; };
 		21D49D742BFF7D10004D1818 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D49D732BFF7D10004D1818 /* TabBarController.swift */; };
-		21D49D772C008D12004D1818 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 21D49D762C008D12004D1818 /* ProgressHUD */; };
 		21D49D7A2C008D21004D1818 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 21D49D792C008D21004D1818 /* SwiftKeychainWrapper */; };
 		21D49D7D2C008D50004D1818 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21D49D7C2C008D50004D1818 /* Kingfisher */; };
+		21D49DCC2C1072BD004D1818 /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D49DCB2C1072BD004D1818 /* ImagesListService.swift */; };
+		21D49DD42C10B640004D1818 /* Imagegram_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D49DD32C10B640004D1818 /* Imagegram_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,13 @@
 			remoteInfo = Imagegram;
 		};
 		21BD94F62BBED70200AA6DBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21BD94CA2BBED6FF00AA6DBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21BD94D12BBED6FF00AA6DBD;
+			remoteInfo = Imagegram;
+		};
+		21D49DD52C10B640004D1818 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 21BD94CA2BBED6FF00AA6DBD /* Project object */;
 			proxyType = 1;
@@ -82,6 +94,8 @@
 		214B80172BEA59930048B461 /* URLSession+data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+data.swift"; sourceTree = "<group>"; };
 		214B80192BEA62660048B461 /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
 		214B801C2BEA8B510048B461 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		216360642C1319A90004F9EB /* ImagesListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCellDelegate.swift; sourceTree = "<group>"; };
+		216360662C15CE030004F9EB /* ProfileLogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogoutService.swift; sourceTree = "<group>"; };
 		21B0F4E42BFCC597003101BA /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
 		21B0F4E72BFD2300003101BA /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		21BD94D22BBED6FF00AA6DBD /* Imagegram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imagegram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,9 +112,13 @@
 		21BD94F52BBED70200AA6DBD /* ImagegramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImagegramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BD94F92BBED70200AA6DBD /* ImagegramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagegramUITests.swift; sourceTree = "<group>"; };
 		21BD94FB2BBED70200AA6DBD /* ImagegramUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagegramUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		21C509E52C165ECC0079CD0A /* ProfileAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAlertController.swift; sourceTree = "<group>"; };
 		21D1566C2BF9116A005BBED3 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 		21D1566E2BF9185B005BBED3 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		21D49D732BFF7D10004D1818 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		21D49DCB2C1072BD004D1818 /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
+		21D49DD12C10B640004D1818 /* Imagegram Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Imagegram Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21D49DD32C10B640004D1818 /* Imagegram_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imagegram_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +126,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				216360632C11D3150004F9EB /* ProgressHUD in Frameworks */,
 				21D49D7D2C008D50004D1818 /* Kingfisher in Frameworks */,
 				21D49D7A2C008D21004D1818 /* SwiftKeychainWrapper in Frameworks */,
-				21D49D772C008D12004D1818 /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +146,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21D49DCE2C10B640004D1818 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -137,6 +162,7 @@
 				2107EEAD2BE15E4C00E59521 /* ProfileViewController.swift */,
 				21D1566E2BF9185B005BBED3 /* ProfileService.swift */,
 				21B0F4E42BFCC597003101BA /* ProfileImageService.swift */,
+				216360662C15CE030004F9EB /* ProfileLogoutService.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -154,6 +180,7 @@
 			children = (
 				21BD94D92BBED6FF00AA6DBD /* ImagesListViewController.swift */,
 				21105BBC2BC54E04005D0C20 /* ImagesListCell.swift */,
+				216360642C1319A90004F9EB /* ImagesListCellDelegate.swift */,
 			);
 			path = ImagesList;
 			sourceTree = "<group>";
@@ -190,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				21B0F4E72BFD2300003101BA /* AlertController.swift */,
+				21C509E52C165ECC0079CD0A /* ProfileAlertController.swift */,
 			);
 			path = AlertController;
 			sourceTree = "<group>";
@@ -198,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				21D49D732BFF7D10004D1818 /* TabBarController.swift */,
+				21D49DCA2C1072AC004D1818 /* Images List Service */,
 				21B0F4E62BFD22DC003101BA /* AlertController */,
 				21D1566B2BF91158005BBED3 /* ProgressHUD */,
 				214B801B2BEA8B300048B461 /* Splash View */,
@@ -209,6 +238,7 @@
 				21BD94EE2BBED70200AA6DBD /* ImagegramTests */,
 				21BD94F82BBED70200AA6DBD /* ImagegramUITests */,
 				21105BBF2BC57B0E005D0C20 /* Fonts */,
+				21D49DD22C10B640004D1818 /* Imagegram Tests */,
 				21BD94D32BBED6FF00AA6DBD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -219,6 +249,7 @@
 				21BD94D22BBED6FF00AA6DBD /* Imagegram.app */,
 				21BD94EB2BBED70200AA6DBD /* ImagegramTests.xctest */,
 				21BD94F52BBED70200AA6DBD /* ImagegramUITests.xctest */,
+				21D49DD12C10B640004D1818 /* Imagegram Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,6 +295,22 @@
 			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
+		21D49DCA2C1072AC004D1818 /* Images List Service */ = {
+			isa = PBXGroup;
+			children = (
+				21D49DCB2C1072BD004D1818 /* ImagesListService.swift */,
+			);
+			path = "Images List Service";
+			sourceTree = "<group>";
+		};
+		21D49DD22C10B640004D1818 /* Imagegram Tests */ = {
+			isa = PBXGroup;
+			children = (
+				21D49DD32C10B640004D1818 /* Imagegram_Tests.swift */,
+			);
+			path = "Imagegram Tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -282,9 +329,9 @@
 			);
 			name = Imagegram;
 			packageProductDependencies = (
-				21D49D762C008D12004D1818 /* ProgressHUD */,
 				21D49D792C008D21004D1818 /* SwiftKeychainWrapper */,
 				21D49D7C2C008D50004D1818 /* Kingfisher */,
+				216360622C11D3150004F9EB /* ProgressHUD */,
 			);
 			productName = Imagegram;
 			productReference = 21BD94D22BBED6FF00AA6DBD /* Imagegram.app */;
@@ -326,6 +373,24 @@
 			productReference = 21BD94F52BBED70200AA6DBD /* ImagegramUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		21D49DD02C10B640004D1818 /* Imagegram Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21D49DD72C10B640004D1818 /* Build configuration list for PBXNativeTarget "Imagegram Tests" */;
+			buildPhases = (
+				21D49DCD2C10B640004D1818 /* Sources */,
+				21D49DCE2C10B640004D1818 /* Frameworks */,
+				21D49DCF2C10B640004D1818 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21D49DD62C10B640004D1818 /* PBXTargetDependency */,
+			);
+			name = "Imagegram Tests";
+			productName = "Imagegram Tests";
+			productReference = 21D49DD12C10B640004D1818 /* Imagegram Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -347,6 +412,10 @@
 						CreatedOnToolsVersion = 15.1;
 						TestTargetID = 21BD94D12BBED6FF00AA6DBD;
 					};
+					21D49DD02C10B640004D1818 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 21BD94D12BBED6FF00AA6DBD;
+					};
 				};
 			};
 			buildConfigurationList = 21BD94CD2BBED6FF00AA6DBD /* Build configuration list for PBXProject "Imagegram" */;
@@ -359,9 +428,9 @@
 			);
 			mainGroup = 21BD94C92BBED6FF00AA6DBD;
 			packageReferences = (
-				21D49D752C008D12004D1818 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				21D49D782C008D21004D1818 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				21D49D7B2C008D50004D1818 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				216360612C11D3150004F9EB /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
 			productRefGroup = 21BD94D32BBED6FF00AA6DBD /* Products */;
 			projectDirPath = "";
@@ -370,6 +439,7 @@
 				21BD94D12BBED6FF00AA6DBD /* Imagegram */,
 				21BD94EA2BBED70200AA6DBD /* ImagegramTests */,
 				21BD94F42BBED70200AA6DBD /* ImagegramUITests */,
+				21D49DD02C10B640004D1818 /* Imagegram Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -401,6 +471,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21D49DCF2C10B640004D1818 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -413,11 +490,15 @@
 				2107EEAE2BE15E4C00E59521 /* ProfileViewController.swift in Sources */,
 				21BD94E02BBED6FF00AA6DBD /* Imagegram.xcdatamodeld in Sources */,
 				21BD94DA2BBED6FF00AA6DBD /* ImagesListViewController.swift in Sources */,
+				216360672C15CE030004F9EB /* ProfileLogoutService.swift in Sources */,
+				21D49DCC2C1072BD004D1818 /* ImagesListService.swift in Sources */,
 				214B80162BE9022F0048B461 /* OAuth2Service.swift in Sources */,
 				21B0F4E52BFCC597003101BA /* ProfileImageService.swift in Sources */,
 				214B801D2BEA8B510048B461 /* SplashViewController.swift in Sources */,
 				21105BBD2BC54E04005D0C20 /* ImagesListCell.swift in Sources */,
+				21C509E62C165ECC0079CD0A /* ProfileAlertController.swift in Sources */,
 				2107EEB12BE15E9200E59521 /* SingleViewController.swift in Sources */,
+				216360652C1319A90004F9EB /* ImagesListCellDelegate.swift in Sources */,
 				21D49D742BFF7D10004D1818 /* TabBarController.swift in Sources */,
 				21B0F4E82BFD2300003101BA /* AlertController.swift in Sources */,
 				21D1566D2BF9116A005BBED3 /* UIBlockingProgressHUD.swift in Sources */,
@@ -447,6 +528,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21D49DCD2C10B640004D1818 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21D49DD42C10B640004D1818 /* Imagegram_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -459,6 +548,11 @@
 			isa = PBXTargetDependency;
 			target = 21BD94D12BBED6FF00AA6DBD /* Imagegram */;
 			targetProxy = 21BD94F62BBED70200AA6DBD /* PBXContainerItemProxy */;
+		};
+		21D49DD62C10B640004D1818 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21BD94D12BBED6FF00AA6DBD /* Imagegram */;
+			targetProxy = 21D49DD52C10B640004D1818 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -739,6 +833,44 @@
 			};
 			name = Release;
 		};
+		21D49DD82C10B640004D1818 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P87WDJBUA5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.usvladis.Imagegram-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Imagegram.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Imagegram";
+			};
+			name = Debug;
+		};
+		21D49DD92C10B640004D1818 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P87WDJBUA5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.usvladis.Imagegram-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Imagegram.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Imagegram";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -778,10 +910,19 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		21D49DD72C10B640004D1818 /* Build configuration list for PBXNativeTarget "Imagegram Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21D49DD82C10B640004D1818 /* Debug */,
+				21D49DD92C10B640004D1818 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		21D49D752C008D12004D1818 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+		216360612C11D3150004F9EB /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
 			requirement = {
@@ -808,9 +949,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		21D49D762C008D12004D1818 /* ProgressHUD */ = {
+		216360622C11D3150004F9EB /* ProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21D49D752C008D12004D1818 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			package = 216360612C11D3150004F9EB /* XCRemoteSwiftPackageReference "ProgressHUD" */;
 			productName = ProgressHUD;
 		};
 		21D49D792C008D21004D1818 /* SwiftKeychainWrapper */ = {

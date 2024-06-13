@@ -28,9 +28,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                                 <color key="backgroundColor" name="YPBlack"/>
                                 <color key="tintColor" name="YPBlack"/>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" name="YPBlack"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="ImagesListCell" rowHeight="219" id="coO-aL-HBg" customClass="ImagesListCell" customModule="Imagegram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="ImagesListCell" rowHeight="219" id="coO-aL-HBg" customClass="ImagesListCell" customModule="Imagegram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="430" height="219"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="coO-aL-HBg" id="JTR-pK-3FA">
@@ -57,6 +57,9 @@
                                                     <state key="normal">
                                                         <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="likeButtonClicked" destination="coO-aL-HBg" eventType="touchUpInside" id="v53-zr-pNr"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 августа 2024" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvf-hu-5Mx" userLabel="Data Label">
                                                     <rect key="frame" x="24" y="191.66666666666666" width="518" height="15.333333333333343"/>
