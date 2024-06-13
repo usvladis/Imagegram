@@ -12,44 +12,47 @@ enum WebViewConstants{
     static let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
 }
 
-final class WebViewViewController: UIViewController{
-    weak var delegate: WebViewViewControllerDelegate?
+public protocol  WebViewViewControllerProtocol: AnyObject{
+    var presenter: WebViewPresenterProtocol? { get set }
+    func load(request: URLRequest)
+    func setProgressValue(_ newValue: Float)
+    func setProgressHidden(_ isHidden: Bool)
+}
+
+final class WebViewViewController: UIViewController, WebViewViewControllerProtocol {
+    var presenter: WebViewPresenterProtocol?
+
     @IBOutlet private var webView: WKWebView!
     @IBOutlet private var progress: UIProgressView!
     
+    weak var delegate: WebViewViewControllerDelegate?
     private var progressObservation: NSKeyValueObservation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
-        loadAuthView()
+        presenter?.viewDidLoad()
         observeProgress()
     }
     
-    private func observeProgress() {
+    func observeProgress() {
         progressObservation = webView.observe(\.estimatedProgress, options: .new) { [weak self] _, change in
             guard let self = self else { return }
             if let newValue = change.newValue {
-                self.updateProgress(newValue)
+                presenter?.didUpdateProgressValue(newValue)
             }
         }
     }
     
-    private func updateProgress(_ progressValue: Double) {
-        progress.progress = Float(progressValue)
-        progress.isHidden = fabs(progressValue - 1.0) <= 0.0001
+    func setProgressValue(_ newValue: Float){
+        progress.progress = Float(newValue)
     }
-    private func loadAuthView(){
-        guard var urlComponents = URLComponents(string: WebViewConstants.unsplashAuthorizeURLString) else {fatalError("Failed to construct URL")}
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Constants.accessKey),
-            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: Constants.accessScope)
-         ]
-        guard let url = urlComponents.url else {fatalError("Failed to construct URL")}
-        
-        let request = URLRequest(url: url)
+    
+    func setProgressHidden(_ isHidden: Bool) {
+        progress.isHidden = isHidden
+    }
+    
+    func load(request: URLRequest) {
         webView.load(request)
     }
 }
@@ -69,17 +72,10 @@ extension WebViewViewController: WKNavigationDelegate{
     }
     
     private func code(from navigationAction: WKNavigationAction) -> String? {
-        if
-            let url = navigationAction.request.url,
-            let urlComponents = URLComponents(string: url.absoluteString),
-            urlComponents.path == "/oauth/authorize/native",
-            let items = urlComponents.queryItems,
-            let codeItems = items.first(where: { $0.name == "code"})
-        {
-            return codeItems.value
-        }else{
-            return nil
+        if let url = navigationAction.request.url {
+            return presenter?.code(from: url)
         }
+        return nil
     }
 }
 

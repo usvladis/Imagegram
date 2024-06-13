@@ -7,7 +7,8 @@
 
 import UIKit
 import Kingfisher
-final class ProfileViewController: UIViewController{
+
+final class ProfileViewController: UIViewController {
     private var profileImageServiceObserver: NSObjectProtocol?
 
     private var image = UIImageView()

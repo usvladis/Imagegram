@@ -258,7 +258,7 @@
         <!--Web View View Controller-->
         <scene sceneID="nO7-yU-Dxm">
             <objects>
-                <viewController id="eob-dj-Llu" customClass="WebViewViewController" customModule="Imagegram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewViewController" id="eob-dj-Llu" customClass="WebViewViewController" customModule="Imagegram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="723-ba-EBF">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

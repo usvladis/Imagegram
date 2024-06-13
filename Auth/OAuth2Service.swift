@@ -27,7 +27,7 @@ final class OAuth2Service{
     private init() {}
     
     func makeTokenRequest(code: String) -> URLRequest? {
-        guard let baseURL = Constants.baseURL else {
+        guard let baseURL = URL(string: "https://unsplash.com") else {
             return nil
         }
         
