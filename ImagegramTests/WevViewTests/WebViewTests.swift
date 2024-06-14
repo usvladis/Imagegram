@@ -19,7 +19,7 @@ final class WebViewTests: XCTestCase {
         presenter.view = viewController
         
         //When
-        _ = viewController.view
+        viewController.loadViewIfNeeded()
         
         //Then
         XCTAssertTrue(presenter.viewDidLoadCalled)

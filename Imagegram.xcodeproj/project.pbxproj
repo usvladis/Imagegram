@@ -12,10 +12,13 @@
 		21105BBD2BC54E04005D0C20 /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21105BBC2BC54E04005D0C20 /* ImagesListCell.swift */; };
 		21105BC22BC57B57005D0C20 /* YS Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21105BC02BC57B57005D0C20 /* YS Display-Bold.ttf */; };
 		21105BC32BC57B57005D0C20 /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21105BC12BC57B57005D0C20 /* YS Display-Medium.ttf */; };
+		213283862C1C4E8700D125D3 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213283852C1C4E8700D125D3 /* ProfilePresenter.swift */; };
+		213283892C1C513E00D125D3 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 213283882C1C513E00D125D3 /* ProgressHUD */; };
+		2132838D2C1C755100D125D3 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2132838C2C1C755100D125D3 /* ProfileTests.swift */; };
+		2132838F2C1C77C400D125D3 /* ProfilePresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2132838E2C1C77C400D125D3 /* ProfilePresenterMock.swift */; };
 		21329F112C1ACE3B003FB999 /* WebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21329F102C1ACE3B003FB999 /* WebViewPresenter.swift */; };
 		213F121C2C1B112000CA9BFC /* AuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F121B2C1B112000CA9BFC /* AuthHelper.swift */; };
 		213F121E2C1B1C9000CA9BFC /* WebViewPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F121D2C1B1C9000CA9BFC /* WebViewPresenterSpy.swift */; };
-		213F12202C1B4F6500CA9BFC /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F121F2C1B4F6500CA9BFC /* ProfilePresenter.swift */; };
 		214B800F2BE508230048B461 /* AuthConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B800E2BE508230048B461 /* AuthConfiguration.swift */; };
 		214B80122BE50D360048B461 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B80112BE50D360048B461 /* AuthViewController.swift */; };
 		214B80142BE511AF0048B461 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B80132BE511AF0048B461 /* WebViewViewController.swift */; };
@@ -23,7 +26,6 @@
 		214B80182BEA59930048B461 /* URLSession+data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B80172BEA59930048B461 /* URLSession+data.swift */; };
 		214B801A2BEA62660048B461 /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B80192BEA62660048B461 /* OAuth2TokenStorage.swift */; };
 		214B801D2BEA8B510048B461 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B801C2BEA8B510048B461 /* SplashViewController.swift */; };
-		216360632C11D3150004F9EB /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 216360622C11D3150004F9EB /* ProgressHUD */; };
 		216360652C1319A90004F9EB /* ImagesListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216360642C1319A90004F9EB /* ImagesListCellDelegate.swift */; };
 		216360672C15CE030004F9EB /* ProfileLogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216360662C15CE030004F9EB /* ProfileLogoutService.swift */; };
 		21B0F4E52BFCC597003101BA /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0F4E42BFCC597003101BA /* ProfileImageService.swift */; };
@@ -90,10 +92,12 @@
 		21105BBC2BC54E04005D0C20 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		21105BC02BC57B57005D0C20 /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
 		21105BC12BC57B57005D0C20 /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
+		213283852C1C4E8700D125D3 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		2132838C2C1C755100D125D3 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		2132838E2C1C77C400D125D3 /* ProfilePresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenterMock.swift; sourceTree = "<group>"; };
 		21329F102C1ACE3B003FB999 /* WebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPresenter.swift; sourceTree = "<group>"; };
 		213F121B2C1B112000CA9BFC /* AuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHelper.swift; sourceTree = "<group>"; };
 		213F121D2C1B1C9000CA9BFC /* WebViewPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPresenterSpy.swift; sourceTree = "<group>"; };
-		213F121F2C1B4F6500CA9BFC /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		214B800E2BE508230048B461 /* AuthConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfiguration.swift; sourceTree = "<group>"; };
 		214B80112BE50D360048B461 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		214B80132BE511AF0048B461 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				216360632C11D3150004F9EB /* ProgressHUD in Frameworks */,
+				213283892C1C513E00D125D3 /* ProgressHUD in Frameworks */,
 				21D49D7D2C008D50004D1818 /* Kingfisher in Frameworks */,
 				21D49D7A2C008D21004D1818 /* SwiftKeychainWrapper in Frameworks */,
 			);
@@ -169,7 +173,7 @@
 				21D1566E2BF9185B005BBED3 /* ProfileService.swift */,
 				21B0F4E42BFCC597003101BA /* ProfileImageService.swift */,
 				216360662C15CE030004F9EB /* ProfileLogoutService.swift */,
-				213F121F2C1B4F6500CA9BFC /* ProfilePresenter.swift */,
+				213283852C1C4E8700D125D3 /* ProfilePresenter.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -199,6 +203,24 @@
 				21105BC12BC57B57005D0C20 /* YS Display-Medium.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2132838A2C1C6EE700D125D3 /* WevViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				213F121D2C1B1C9000CA9BFC /* WebViewPresenterSpy.swift */,
+				21BD94EF2BBED70200AA6DBD /* WebViewTests.swift */,
+			);
+			path = WevViewTests;
+			sourceTree = "<group>";
+		};
+		2132838B2C1C753200D125D3 /* ProfileTests */ = {
+			isa = PBXGroup;
+			children = (
+				2132838C2C1C755100D125D3 /* ProfileTests.swift */,
+				2132838E2C1C77C400D125D3 /* ProfilePresenterMock.swift */,
+			);
+			path = ProfileTests;
 			sourceTree = "<group>";
 		};
 		213F121A2C1B077C00CA9BFC /* Helpers  */ = {
@@ -289,8 +311,8 @@
 		21BD94EE2BBED70200AA6DBD /* ImagegramTests */ = {
 			isa = PBXGroup;
 			children = (
-				21BD94EF2BBED70200AA6DBD /* WebViewTests.swift */,
-				213F121D2C1B1C9000CA9BFC /* WebViewPresenterSpy.swift */,
+				2132838B2C1C753200D125D3 /* ProfileTests */,
+				2132838A2C1C6EE700D125D3 /* WevViewTests */,
 			);
 			path = ImagegramTests;
 			sourceTree = "<group>";
@@ -340,7 +362,7 @@
 			packageProductDependencies = (
 				21D49D792C008D21004D1818 /* SwiftKeychainWrapper */,
 				21D49D7C2C008D50004D1818 /* Kingfisher */,
-				216360622C11D3150004F9EB /* ProgressHUD */,
+				213283882C1C513E00D125D3 /* ProgressHUD */,
 			);
 			productName = Imagegram;
 			productReference = 21BD94D22BBED6FF00AA6DBD /* Imagegram.app */;
@@ -439,7 +461,7 @@
 			packageReferences = (
 				21D49D782C008D21004D1818 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				21D49D7B2C008D50004D1818 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				216360612C11D3150004F9EB /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				213283872C1C513E00D125D3 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
 			productRefGroup = 21BD94D32BBED6FF00AA6DBD /* Products */;
 			projectDirPath = "";
@@ -506,6 +528,7 @@
 				21B0F4E52BFCC597003101BA /* ProfileImageService.swift in Sources */,
 				214B801D2BEA8B510048B461 /* SplashViewController.swift in Sources */,
 				21329F112C1ACE3B003FB999 /* WebViewPresenter.swift in Sources */,
+				213283862C1C4E8700D125D3 /* ProfilePresenter.swift in Sources */,
 				21105BBD2BC54E04005D0C20 /* ImagesListCell.swift in Sources */,
 				21C509E62C165ECC0079CD0A /* ProfileAlertController.swift in Sources */,
 				2107EEB12BE15E9200E59521 /* SingleViewController.swift in Sources */,
@@ -526,8 +549,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2132838F2C1C77C400D125D3 /* ProfilePresenterMock.swift in Sources */,
+				2132838D2C1C755100D125D3 /* ProfileTests.swift in Sources */,
 				21BD94F02BBED70200AA6DBD /* WebViewTests.swift in Sources */,
-				213F12202C1B4F6500CA9BFC /* ProfilePresenter.swift in Sources */,
 				213F121E2C1B1C9000CA9BFC /* WebViewPresenterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -934,7 +958,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		216360612C11D3150004F9EB /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+		213283872C1C513E00D125D3 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
 			requirement = {
@@ -961,9 +985,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		216360622C11D3150004F9EB /* ProgressHUD */ = {
+		213283882C1C513E00D125D3 /* ProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 216360612C11D3150004F9EB /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			package = 213283872C1C513E00D125D3 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
 			productName = ProgressHUD;
 		};
 		21D49D792C008D21004D1818 /* SwiftKeychainWrapper */ = {
