@@ -32,7 +32,7 @@ struct UrlsResult: Codable{
     let regular: String
 }
 
-final class ImagesListService{
+class ImagesListService{
     private (set) var photos: [Photo] = []
     private var isLoading = false
     private var lastLoadedPage: Int?
