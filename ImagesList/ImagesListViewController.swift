@@ -31,6 +31,7 @@ final class ImagesListViewController: UIViewController, ImagesListViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.accessibilityIdentifier = "ImagegramTable"
         setupTableView()
         presenter.fetchPhotos()
     }
@@ -70,6 +71,7 @@ final class ImagesListViewController: UIViewController, ImagesListViewProtocol {
         }
         
         cell.likeButton.tintColor = photo.isLiked ? .ypRed : .gray
+        cell.likeButton.accessibilityIdentifier = "likeButton"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -119,7 +121,7 @@ extension ImagesListViewController: UITableViewDataSource {
 
 extension ImagesListViewController {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 1 == presenter.numberOfPhotos {
+        if indexPath.row + 1 == presenter.numberOfPhotos && !ProcessInfo.processInfo.arguments.contains("UITESTS") {
             presenter.fetchPhotos()
         }
     }

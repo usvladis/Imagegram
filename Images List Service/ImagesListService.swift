@@ -7,30 +7,6 @@
 
 import Foundation
 import UIKit
-struct Photo{
-    let id: String
-    let size: CGSize
-    let createdAt: Date?
-    let welcomeDescription: String?
-    let thumbImageURL: String
-    let largeImageURL: String
-    var isLiked: Bool
-}
-struct PhotoResult: Codable{
-    let id: String
-    let created_at: Date
-    let width: Int
-    let height: Int
-    let likes: Int
-    let liked_by_user: Bool
-    let description: String?
-    let urls: UrlsResult
-}
-
-struct UrlsResult: Codable{
-    let full: String
-    let regular: String
-}
 
 class ImagesListService{
     private (set) var photos: [Photo] = []

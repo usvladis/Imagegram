@@ -93,6 +93,7 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
     
     private func setUpButton(){
         button = UIButton(type: .system)
+        button.accessibilityIdentifier = "logoutButton"
         button.setImage(UIImage(named: "logout_button"), for: .normal)
         button.tintColor = UIColor(named: "YPRed")
         button.translatesAutoresizingMaskIntoConstraints = false

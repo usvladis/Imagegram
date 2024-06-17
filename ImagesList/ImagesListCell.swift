@@ -19,7 +19,11 @@ final class ImagesListCell: UITableViewCell{
     @IBAction private func likeButtonClicked() {
         delegate?.imageListCellDidTapLike(self)
     }
-    
+    override func awakeFromNib() {
+            super.awakeFromNib()
+            // Initialization code
+            likeButton.accessibilityIdentifier = "likeButton"
+        }
     func setIsLiked(_ isLiked: Bool) {
         likeButton.tintColor = isLiked ? .ypRed : .gray
     }
