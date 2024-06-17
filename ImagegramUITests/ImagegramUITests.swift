@@ -45,13 +45,13 @@ final class ImagegramUITests: XCTestCase {
         //Ввели логин, пароль и нажмали вход
         XCTAssertTrue(emailAddressTextField.waitForExistence(timeout: 10))
         emailAddressTextField.tap()
-        emailAddressTextField.typeText("usvladis@gmail.com")
+        emailAddressTextField.typeText(" ")
         app.toolbars.buttons["Done"].tap()
         sleep(2)
 
         XCTAssertTrue(passwordSecureTextField.waitForExistence(timeout: 10))
         passwordSecureTextField.tap()
-        passwordSecureTextField.typeText("Adidasvlad20")
+        passwordSecureTextField.typeText(" ")
         app.toolbars.buttons["Done"].tap()
         sleep(2)
         
