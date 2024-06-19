@@ -38,20 +38,22 @@ final class ImagegramUITests: XCTestCase {
         XCTAssertTrue(webView.waitForExistence(timeout: 10))
         
         //Задали textFiled и кнопку
-        let webViewsQuery = app.webViews.webViews.webViews
-        let emailAddressTextField = webViewsQuery/*@START_MENU_TOKEN@*/.textFields["Email address"]/*[[".otherElements[\"Connect Imagegram + Unsplash | Unsplash\"].textFields[\"Email address\"]",".textFields[\"Email address\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        let passwordSecureTextField = webViewsQuery/*@START_MENU_TOKEN@*/.secureTextFields["Password"]/*[[".otherElements[\"Connect Imagegram + Unsplash | Unsplash\"].secureTextFields[\"Password\"]",".secureTextFields[\"Password\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let webViewsQuery = app.webViews
+        //Сменил поиск textField по названию на простой поиск первого и второго textField
+        let emailAddressTextField = webViewsQuery.descendants(matching: .textField).element
+        let passwordSecureTextField = webViewsQuery.descendants(matching: .secureTextField).element
         
         //Ввели логин, пароль и нажмали вход
         XCTAssertTrue(emailAddressTextField.waitForExistence(timeout: 10))
         emailAddressTextField.tap()
-        emailAddressTextField.typeText(" ")
+        emailAddressTextField.typeText("usvladis@gmail.com")
+        //Здесь мы закрываем клавиатуру нажатием на кнопку Done. Tсли симулятор запускается впервые, на клавиатуре будет инструкция по пользованию, без кнопки. В таком случае нужно будет перезапустить тест
         app.toolbars.buttons["Done"].tap()
         sleep(2)
 
         XCTAssertTrue(passwordSecureTextField.waitForExistence(timeout: 10))
         passwordSecureTextField.tap()
-        passwordSecureTextField.typeText(" ")
+        passwordSecureTextField.typeText("Adidasvlad20")
         app.toolbars.buttons["Done"].tap()
         sleep(2)
         
@@ -87,6 +89,7 @@ final class ImagegramUITests: XCTestCase {
         XCTAssertTrue(likeButton.waitForExistence(timeout: 10))
        
         // Проверить, что кнопка видима
+        // Если код падает с ошибкой "Failed to failed to compute hit point for Button, {{inf, inf}, {0.0, 0.0}}, identifier:..., в классе ImageListViewController закомментируйте строчки 124 - 126."
         likeButton.tap()
         sleep(2)
         
