@@ -7,8 +7,17 @@
 
 import UIKit
 import Kingfisher
-final class ProfileViewController: UIViewController{
+
+public protocol ProfileViewControllerProtocol: AnyObject{
+    func switchToSplashView()
+    func updateLabels(name: String, loginName: String, bio: String)
+    func showImage(with url: URL)
+    
+}
+
+final class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     private var profileImageServiceObserver: NSObjectProtocol?
+    lazy var presenter: ProfilePresenterProtocol = ProfilePresenter(view: self)
 
     private var image = UIImageView()
     private var nameLabel = UILabel()
@@ -16,21 +25,21 @@ final class ProfileViewController: UIViewController{
     private var descriptionLabel = UILabel()
     private var button = UIButton()
     private var alertPresenter: ProfileAlertPresenter?
-    let profileService = ProfileService.shared
-    let logoutService = ProfileLogoutService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //presenter = ProfilePresenter(view: self)
         alertPresenter = ProfileAlertPresenter(viewController: self)
         setUpView()
-        updateLabels()
+        presenter.viewDidLoad()
         profileImageServiceObserver = NotificationCenter.default
             .addObserver(
                 forName: ProfileImageService.didChangeNotification,
                 object: nil,
                 queue: .main                                       
             ) { [weak self] _ in
-                guard self != nil else { return }
+                self?.presenter.updateView()
             }
     }
     
@@ -42,13 +51,7 @@ final class ProfileViewController: UIViewController{
         setUpButton()
     }
     private func setUpImage(){
-        image = UIImageView()
-        if let avatarURLString = ProfileImageService.shared.avatarURL,
-           let avatarURL = URL(string: avatarURLString) {
-            image.kf.setImage(with: avatarURL, placeholder: UIImage(named: "placeholder"))
-        } else {
-            image.image = UIImage(named: "placeholder")
-        }
+
         image.layer.cornerRadius = 35
         image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -90,6 +93,7 @@ final class ProfileViewController: UIViewController{
     
     private func setUpButton(){
         button = UIButton(type: .system)
+        button.accessibilityIdentifier = "logoutButton"
         button.setImage(UIImage(named: "logout_button"), for: .normal)
         button.tintColor = UIColor(named: "YPRed")
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -106,27 +110,14 @@ final class ProfileViewController: UIViewController{
 
     @IBAction private func didTapLogoutButton() {
         alertPresenter?.showAlert { [weak self] in
-            self?.logout()
+            self?.presenter.logout()
         }
     }
     
-    private func logout() {
-        logoutService.clearAllUserData()
-        switchToSplashView()
-    }
-}
-
-extension ProfileViewController {
-    private func updateLabels() {
-        guard let profile = ProfileService.shared.profile else { return }
-        nameLabel.text = profile.name
-        nickNameLabel.text = profile.loginName
-        descriptionLabel.text = profile.bio
-    }
 }
 
 extension ProfileViewController{
-    private func switchToSplashView() {
+    func switchToSplashView() {
         DispatchQueue.main.async { [weak self] in
             guard self != nil else { return }
             guard let window = UIApplication.shared.windows.first else {
@@ -137,5 +128,15 @@ extension ProfileViewController{
             window.rootViewController = splashViewController
             window.makeKeyAndVisible()
         }
+    }
+    
+    func showImage(with url: URL) {
+            image.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"))
+        }
+    
+    func updateLabels(name: String, loginName: String, bio: String) {
+        nameLabel.text = name
+        nickNameLabel.text = loginName
+        descriptionLabel.text = bio
     }
 }
